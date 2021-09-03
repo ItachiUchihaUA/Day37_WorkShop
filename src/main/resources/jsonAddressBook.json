@@ -1,0 +1,22 @@
+[
+  {
+    "firstName": "ujjwal",
+    "lastName": "aakash",
+    "Address": "b293",
+    "city": "pune",
+    "state": "maha",
+    "email": "ujjwal@asd.com",
+    "Phone": "9876543212",
+    "zip": "345321"
+  },
+  {
+    "firstName": "devesh",
+    "lastName": "pandit",
+    "Address": "h56",
+    "city": "mumbai",
+    "state": "maha",
+    "email": "devesh@asd.com",
+    "Phone": "9876543215",
+    "zip": "989690"
+  }
+]
