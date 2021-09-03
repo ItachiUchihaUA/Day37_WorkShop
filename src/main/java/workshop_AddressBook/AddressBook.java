@@ -13,7 +13,7 @@ public class AddressBook {
 
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to Address Book System!");
+		System.out.println("Welcome to Address Book System!\n");
 		
 		Ability.addContact();
 		Ability.editContact();
@@ -36,6 +36,8 @@ public class AddressBook {
 		IO.writeInCSV(addressBook, "src\\main\\resources\\csvFile.csv");
 		IO.readFromCSV("src\\main\\resources\\csvFile.csv");
 		
+		IO.writeToJson(addressBook, "src\\main\\resources\\jsonAddressBook.json");
+		IO.readFromJSon("src\\main\\resources\\jsonAddressBook.json");
 		
 	}
 }

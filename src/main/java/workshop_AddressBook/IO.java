@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -11,8 +12,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
+
 
 public class IO {
 
@@ -55,7 +61,6 @@ public class IO {
 				System.out.println("ZIP : " + records[7]);
 				System.out.println("-------------------------");
 			}
-			csv.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -76,6 +81,34 @@ public class IO {
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+		}
+	}
+	
+	protected static void writeToJson(List<Contact> c, String s) {
+		
+		Gson g = new GsonBuilder().setPrettyPrinting().create();
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(s));
+			g.toJson(c, bw);
+			bw.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	protected static void readFromJSon(String s) {
+		Gson g = new Gson();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(s));
+			Contact[] c = g.fromJson(br, Contact[].class);
+			for(int i =0; i< c.length ; i++ ) {
+				System.out.println(c[i].toString());
+			}
+			br.close();
+			
+		} catch (JsonSyntaxException | JsonIOException | IOException e) {
+			e.printStackTrace();
 		}
 	}
 }
