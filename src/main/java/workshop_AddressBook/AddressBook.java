@@ -11,6 +11,6 @@ public class AddressBook {
 		System.out.println("Welcome to Address Book System!");
 		Contact contact = new Contact();
 		Ability.addContact();
-
+		Ability.editContact();
 	}
 }
