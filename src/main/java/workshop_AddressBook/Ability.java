@@ -66,4 +66,22 @@ public class Ability {
 			System.out.println("No Such Contact Found!");
 		}
 	}
+	
+	static protected void deleteContact() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter First Name to delete : ");
+		String name = sc.next();
+		int flag2 = 0;
+		for (int i = 0; i < AddressBook.addressBook.size(); i++) {
+			if (AddressBook.addressBook.get(i).getFirstName().equals(name)) {
+				flag2 = 1;
+				AddressBook.addressBook.remove(i);
+				i--;
+				System.out.println("Deleted!");
+			}
+		}
+		if (flag2 == 0) {
+			System.out.println("No Such Contact Found!");
+		}
+	}
 }
