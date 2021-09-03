@@ -33,6 +33,9 @@ public class AddressBook {
 		IO.writeToFile(addressBook, "src\\main\\resources\\Addressbook.txt");
 		IO.readFromFile("src\\main\\resources\\Addressbook.txt");
 		
+		IO.writeInCSV(addressBook, "src\\main\\resources\\csvFile.csv");
+		IO.readFromCSV("src\\main\\resources\\csvFile.csv");
+		
 		
 	}
 }
