@@ -32,7 +32,9 @@ public class Ability {
 				c.setPhone(sc.next());
 				System.out.println("Enter email: ");
 				c.setEmail(sc.next());
+				
 				AddressBook.addressBook.add(c);
+				
 				System.out.println("Want to Add more?\n");
 				flag = 2;
 			} catch (Exception e) {
