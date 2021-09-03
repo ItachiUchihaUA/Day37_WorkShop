@@ -23,7 +23,11 @@ public class AddressBook {
 		
 		Search.inCityOrState();
 		
-
+		ToMap.cityMap();
+		ToMap.stateMap();
+		
+		Count.forCity();
+		Count.forState();
 		
 	}
 }
