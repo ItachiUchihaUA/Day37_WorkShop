@@ -3,11 +3,11 @@ package workshop_AddressBook;
 public class Contact {
 	private String firstName;
 	private String lastName;
-	private String Address;
+	private String address;
 	private String city;
 	private String state;
 	private String email;
-	private String Phone;
+	private String phone;
 	private String zip;
 	
 	public String getFirstName() {
@@ -23,10 +23,10 @@ public class Contact {
 		this.lastName = lastName;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 	public String getCity() {
 		return city;
@@ -47,10 +47,10 @@ public class Contact {
 		this.email = email;
 	}
 	public String getPhone() {
-		return Phone;
+		return phone;
 	}
 	public void setPhone(String phone) {
-		Phone = phone;
+		this.phone = phone;
 	}
 	public String getZip() {
 		return zip;
@@ -58,18 +58,27 @@ public class Contact {
 	public void setZip(String zip) {
 		this.zip = zip;
 	} 
-	
-	public boolean firstEquals(String c) {
-		return this.getFirstName().equals(c);
+	public Contact() {
+		
 	}
 	
-	public boolean cityEquals(String c) {
-		return this.getCity().equals(c);
+	public Contact(String firstName, String lastName, String address, String city, String state, String email,
+			String phone, String zip) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.email = email;
+		this.phone = phone;
+		this.zip = zip;
 	}
+
 	
 	@Override
 	public String toString() {
-		return "[firstName=" + firstName + ", lastName=" + lastName + ", Address=" + Address + ", city=" + city
-				+ ", state=" + state + ", email=" + email + ", Phone=" + Phone + ", zip=" + zip + "] \n";
+		return "[firstName=" + firstName + ", lastName=" + lastName + ", Address=" + address + ", city=" + city
+				+ ", state=" + state + ", email=" + email + ", Phone=" + phone + ", zip=" + zip + "] \n";
 	}
 }
