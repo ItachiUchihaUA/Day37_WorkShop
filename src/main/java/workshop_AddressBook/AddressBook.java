@@ -29,5 +29,7 @@ public class AddressBook {
 		Count.forCity();
 		Count.forState();
 		
+		addressBook = Sort.byName();
+		
 	}
 }
