@@ -40,8 +40,8 @@ public class Ability {
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			} finally {
-				while (flag != 1 || flag != 0) {
-					System.out.println("\n only Enter 1 for Yes or 0 for No: ");
+				while (flag != 1 && flag != 0) {
+					System.out.println(" only Enter 1 for Yes or 0 for No: ");
 					flag = sc.nextInt();
 				}
 			}
@@ -80,7 +80,7 @@ public class Ability {
 			}
 			flag = 2;
 			System.out.println("Edit more?");
-			while (flag != 0 || flag != 1) {
+			while (flag != 0 && flag != 1) {
 				System.out.println("Only Enter 1 for yes or 0 for No: ");
 				flag = sc.nextInt();
 			}
@@ -106,7 +106,7 @@ public class Ability {
 				System.out.println("No Such Contact Found!");
 			}
 			flag = 2;
-			while (flag != 0 || flag != 1) {
+			while (flag != 0 && flag != 1) {
 				System.out.println("Only Enter 1 for yes or 0 for No: ");
 				flag = sc.nextInt();
 			}
@@ -116,7 +116,7 @@ public class Ability {
 }
 
 class ContactExist extends Exception {
-	private String getmessage() {
+	public String getMessage() {
 		return "Contact Exists!";
 	}
 }

@@ -66,4 +66,10 @@ public class Contact {
 	public boolean cityEquals(String c) {
 		return this.getCity().equals(c);
 	}
+	
+	@Override
+	public String toString() {
+		return "[firstName=" + firstName + ", lastName=" + lastName + ", Address=" + Address + ", city=" + city
+				+ ", state=" + state + ", email=" + email + ", Phone=" + Phone + ", zip=" + zip + "] \n";
+	}
 }
