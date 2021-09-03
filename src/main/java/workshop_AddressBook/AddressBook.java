@@ -51,5 +51,9 @@ public class AddressBook {
 		DataBase.connectionToDatabase(databaseURL);
 		DataBase.showtable(tableN);
 		DataBase.countByCity(tableN);
+		
+		Contact c = new Contact("Suraj","sharma", "d34", "pune", "maha", "234123", "987654321", "suraj.com");
+		
+		DataBase.insertSQL(tableN, c);
 	}
 }
