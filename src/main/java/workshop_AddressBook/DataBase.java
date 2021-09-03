@@ -71,8 +71,39 @@ public class DataBase {
 			Statement s = newC.createStatement();
 			ResultSet rs = s.executeQuery(str);
 			while (rs.next()) {
-				System.out.printf("%8s | %8s%n", rs.getString(1), rs.getString(2));
+				System.out.printf("%8s | %8d%n", rs.getString(1), rs.getInt(2));
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	protected static void countByState(String table) {
+		if (newC == null) {
+			System.out.println("Not Found");
+			return;
+		}
+		String str = "select state, count(state) from " + table + " order by state";
+		try {
+			Statement s = newC.createStatement();
+			ResultSet rs = s.executeQuery(str);
+			while (rs.next()) {
+				System.out.printf("%8s | %8d%n", rs.getString(1), rs.getInt(2));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	protected static void delete(String table, String name) {
+		if (newC == null) {
+			System.out.println("Not Found");
+			return;
+		}
+		String str = "Delete from " + table + " where firstName= '" + name + "';";
+		try {
+			Statement s = newC.createStatement();
+			s.execute(str);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
