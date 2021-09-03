@@ -14,7 +14,6 @@ public class AddressBook {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System!");
-		Contact contact = new Contact();
 		
 		Ability.addContact();
 		Ability.editContact();
@@ -31,7 +30,8 @@ public class AddressBook {
 		addressBook = Sort.byName();
 		addressBook = Sort.byCityStateOrZip();
 		
-		
+		IO.writeToFile(addressBook, "src\\main\\resources\\Addressbook.txt");
+		IO.readFromFile("src\\main\\resources\\Addressbook.txt");
 		
 		
 	}
