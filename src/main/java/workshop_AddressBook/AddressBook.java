@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class AddressBook {
 	
@@ -30,6 +29,10 @@ public class AddressBook {
 		Count.forState();
 		
 		addressBook = Sort.byName();
+		addressBook = Sort.byCityStateOrZip();
+		
+		
+		
 		
 	}
 }
