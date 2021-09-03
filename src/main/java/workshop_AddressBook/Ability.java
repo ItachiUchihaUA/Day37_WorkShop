@@ -11,27 +11,37 @@ public class Ability {
 			Scanner sc = new Scanner(System.in);
 			System.out.println("\n---New Contact---");
 			System.out.println("Enter First Name: ");
-			c.setFirstName(sc.next());
-			System.out.println("Enter Last Name: ");
-			c.setLastName(sc.next());
-			System.out.println("Enter Address: ");
-			c.setAddress(sc.next());
-			System.out.println("Enter City: ");
-			c.setCity(sc.next());
-			System.out.println("Enter State: ");
-			c.setState(sc.next());
-			System.out.println("Enter Zip code: ");
-			c.setZip(sc.next());
-			System.out.println("Enter Phone: ");
-			c.setPhone(sc.next());
-			System.out.println("Enter email: ");
-			c.setEmail(sc.next());
-			AddressBook.addressBook.add(c);
-			System.out.println("Want to Add more?\n");
-			flag = 2;
-			while (flag != 1 || flag != 0) {
-				System.out.println("\n only Enter 1 for Yes or 0 for No: ");
-				flag = sc.nextInt();
+			String firstName = sc.next();
+			try {
+				if (!AddressBook.addressBook.isEmpty() && AddressBook.addressBook.stream().anyMatch(n -> n.getFirstName().equals(firstName)) ){
+					// Using Stream to Check any same Contact exists or not!
+						throw new ContactExist();
+				}
+				c.setFirstName(firstName);
+				System.out.println("Enter Last Name: ");
+				c.setLastName(sc.next());
+				System.out.println("Enter Address: ");
+				c.setAddress(sc.next());
+				System.out.println("Enter City: ");
+				c.setCity(sc.next());
+				System.out.println("Enter State: ");
+				c.setState(sc.next());
+				System.out.println("Enter Zip code: ");
+				c.setZip(sc.next());
+				System.out.println("Enter Phone: ");
+				c.setPhone(sc.next());
+				System.out.println("Enter email: ");
+				c.setEmail(sc.next());
+				AddressBook.addressBook.add(c);
+				System.out.println("Want to Add more?\n");
+				flag = 2;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			} finally {
+				while (flag != 1 || flag != 0) {
+					System.out.println("\n only Enter 1 for Yes or 0 for No: ");
+					flag = sc.nextInt();
+				}
 			}
 		}
 	}
@@ -44,7 +54,7 @@ public class Ability {
 			String name = sc.next();
 			int flag2 = 0;
 			for (int i = 0; i < AddressBook.addressBook.size(); i++) {
-				if (AddressBook.addressBook.get(i).getFirstName() == name) {
+				if (AddressBook.addressBook.get(i).getFirstName().equals(name)) {
 					flag2 = 1;
 					System.out.println("---Edit Contact---");
 					System.out.println("Enter First Name: ");
@@ -61,7 +71,6 @@ public class Ability {
 					AddressBook.addressBook.get(i).setZip(sc.next());
 					System.out.println("Enter Phone: ");
 					AddressBook.addressBook.get(i).setPhone(sc.next());
-
 				}
 			}
 			if (flag2 == 0) {
@@ -74,7 +83,6 @@ public class Ability {
 				flag = sc.nextInt();
 			}
 		}
-
 	}
 
 	protected static void deleteContact() {
@@ -101,5 +109,12 @@ public class Ability {
 				flag = sc.nextInt();
 			}
 		}
+	}
+
+}
+
+class ContactExist extends Exception {
+	private String getmessage() {
+		return "Contact Exists!";
 	}
 }
