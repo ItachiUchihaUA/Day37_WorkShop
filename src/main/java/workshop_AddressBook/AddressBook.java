@@ -11,8 +11,14 @@ public class AddressBook {
 	protected static Map<Contact, String> cityBook = new HashMap<>();
 	protected static Map<Contact, String> stateBook = new HashMap<>();
 	
+	static String fileURL= "src\\main\\resources\\Addressbook.txt";
+	static String csvFileURL= "src\\main\\resources\\csvFile.csv";
+	static String jsonFileURL= "src\\main\\resources\\jsonAddressBook.json";
+	
+	
 	static String databaseURL = "jdbc:mysql://localhost:3306/AddressBookSystem";
 	static String tableN = "addressbook";
+	
 
 
 	public static void main(String[] args) {
@@ -33,17 +39,17 @@ public class AddressBook {
 		addressBook = Sort.byName();
 		addressBook = Sort.byCityStateOrZip();
 		
-		IO.writeToFile(addressBook, "src\\main\\resources\\Addressbook.txt");
-		IO.readFromFile("src\\main\\resources\\Addressbook.txt");
+		IO.writeToFile(addressBook, fileURL);
+		IO.readFromFile(fileURL);
 		
-		IO.writeInCSV(addressBook, "src\\main\\resources\\csvFile.csv");
-		IO.readFromCSV("src\\main\\resources\\csvFile.csv");
+		IO.writeInCSV(addressBook, csvFileURL);
+		IO.readFromCSV(csvFileURL);
 		
-		IO.writeToJson(addressBook, "src\\main\\resources\\jsonAddressBook.json");
-		IO.readFromJSon("src\\main\\resources\\jsonAddressBook.json");
+		IO.writeToJson(addressBook, jsonFileURL);
+		IO.readFromJSon(jsonFileURL);
 		
 		DataBase.connectionToDatabase(databaseURL);
-		
+		DataBase.showtable(tableN);
 		
 	}
 }
