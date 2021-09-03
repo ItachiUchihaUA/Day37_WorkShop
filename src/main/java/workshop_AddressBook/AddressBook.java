@@ -50,6 +50,6 @@ public class AddressBook {
 		
 		DataBase.connectionToDatabase(databaseURL);
 		DataBase.showtable(tableN);
-		
+		DataBase.countByCity(tableN);
 	}
 }

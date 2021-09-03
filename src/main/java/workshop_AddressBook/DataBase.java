@@ -7,21 +7,21 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DataBase {
-	
+
 	protected static Connection newC;
-	
+
 	protected static void connectionToDatabase(String URL) {
 		try {
-		newC = DriverManager.getConnection(URL, "ujjwal", "Ujjwal123");
-		if(newC!=null) {
-			System.out.println("Connected to Database");
-		}
-		}catch(Exception e) {
+			newC = DriverManager.getConnection(URL, "ujjwal", "Ujjwal123");
+			if (newC != null) {
+				System.out.println("Connected to Database");
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	protected static void insertSQL(String table, Contact c) {
 
 		try {
@@ -39,22 +39,42 @@ public class DataBase {
 			System.out.println(e.getMessage());
 		}
 	}
-	protected static void showtable( String table) {
-		if(newC==null) {
+
+	protected static void showtable(String table) {
+		if (newC == null) {
 			System.out.println("Not Found");
 			return;
 		}
-		
+
 		try {
 			String str = ("select * from " + table);
 			Statement st = newC.createStatement();
 			ResultSet rs = st.executeQuery(str);
 			while (rs.next()) {
-				System.out.printf("%8s | %8s | %8s | %8s | %8s | %8s | %8s | %8s%n", rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+				System.out.printf("%8s | %8s | %8s | %8s | %8s | %8s | %8s | %8s%n", rs.getString(1), rs.getString(2),
+						rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+						rs.getString(8));
 			}
 			System.out.println();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+		}
+	}
+
+	protected static void countByCity(String table) {
+		if (newC == null) {
+			System.out.println("Not Found");
+			return;
+		}
+		String str = "select city, count(city) from " + table + " order by city";
+		try {
+			Statement s = newC.createStatement();
+			ResultSet rs = s.executeQuery(str);
+			while (rs.next()) {
+				System.out.printf("%8s | %8s%n", rs.getString(1), rs.getString(2));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
