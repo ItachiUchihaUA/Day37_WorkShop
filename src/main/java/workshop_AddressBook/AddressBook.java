@@ -10,6 +10,9 @@ public class AddressBook {
 	protected static List<Contact> addressBook = new ArrayList<>();
 	protected static Map<Contact, String> cityBook = new HashMap<>();
 	protected static Map<Contact, String> stateBook = new HashMap<>();
+	
+	static String databaseURL = "jdbc:mysql://localhost:3306/AddressBookSystem";
+	static String tableN = "addressbook";
 
 
 	public static void main(String[] args) {
@@ -38,6 +41,9 @@ public class AddressBook {
 		
 		IO.writeToJson(addressBook, "src\\main\\resources\\jsonAddressBook.json");
 		IO.readFromJSon("src\\main\\resources\\jsonAddressBook.json");
+		
+		DataBase.connectionToDatabase(databaseURL);
+		
 		
 	}
 }

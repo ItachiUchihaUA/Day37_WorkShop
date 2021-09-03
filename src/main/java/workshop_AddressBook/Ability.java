@@ -35,13 +35,15 @@ public class Ability {
 				
 				AddressBook.addressBook.add(c);
 				
+				DataBase.insertSQL("addressbook", c);
+				
 				System.out.println("Want to Add more?\n");
 				flag = 2;
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			} finally {
 				while (flag != 1 && flag != 0) {
-					System.out.println(" only Enter 1 for Yes or 0 for No: ");
+					System.out.println("only Enter 1 for Yes or 0 for No: ");
 					flag = sc.nextInt();
 				}
 			}
