@@ -59,6 +59,7 @@ public class Ability {
 			int flag2 = 0;
 			for (int i = 0; i < AddressBook.addressBook.size(); i++) {
 				if (AddressBook.addressBook.get(i).getFirstName().equals(name)) {
+					DataBase.delete(AddressBook.tableN, name);
 					flag2 = 1;
 					System.out.println("---Edit Contact---");
 					System.out.println("Enter First Name: ");
@@ -75,6 +76,8 @@ public class Ability {
 					AddressBook.addressBook.get(i).setZip(sc.next());
 					System.out.println("Enter Phone: ");
 					AddressBook.addressBook.get(i).setPhone(sc.next());
+					
+					DataBase.insertSQL(AddressBook.tableN, AddressBook.addressBook.get(i));
 				}
 			}
 			if (flag2 == 0) {
@@ -99,6 +102,7 @@ public class Ability {
 			for (int i = 0; i < AddressBook.addressBook.size(); i++) {
 				if (AddressBook.addressBook.get(i).getFirstName().equals(name)) {
 					flag2 = 1;
+					DataBase.delete(AddressBook.tableN, name);
 					AddressBook.addressBook.remove(i);
 					i--;
 					System.out.println("Deleted!");

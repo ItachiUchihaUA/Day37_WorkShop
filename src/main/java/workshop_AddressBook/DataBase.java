@@ -12,7 +12,7 @@ public class DataBase {
 
 	protected static void connectionToDatabase(String URL) {
 		try {
-			newC = DriverManager.getConnection(URL, "ujjwal", "Ujjwal123");
+			newC = DriverManager.getConnection(URL, "ujjwal", "ujjwal123");
 			if (newC != null) {
 				System.out.println("Connected to Database");
 			}
@@ -25,7 +25,7 @@ public class DataBase {
 	protected static void insertSQL(String table, Contact c) {
 
 		try {
-			PreparedStatement p = newC.prepareStatement("insert into " + table + " values(?,?,?,?,?,?,?,?)");
+			PreparedStatement p = newC.prepareStatement("insert into " + table + "(firstName, lastName, address, city, state, zip, phone, email) values(?,?,?,?,?,?,?,?)");
 			p.setString(1, c.getFirstName());
 			p.setString(2, c.getLastName());
 			p.setString(3, c.getAddress());
@@ -33,7 +33,7 @@ public class DataBase {
 			p.setString(5, c.getState());
 			p.setString(6, c.getZip());
 			p.setString(7, c.getPhone());
-			p.setString(8, c.getPhone());
+			p.setString(8, c.getEmail());
 			p.execute();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
