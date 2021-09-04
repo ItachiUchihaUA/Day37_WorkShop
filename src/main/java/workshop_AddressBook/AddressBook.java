@@ -16,13 +16,15 @@ public class AddressBook {
 	static String jsonFileURL= "src\\main\\resources\\jsonAddressBook.json";
 	
 	
-	static String databaseURL = "jdbc:mysql://localhost:3306/AddressBookSystem";
+	static String databaseURL = "jdbc:mysql://localhost:3306/addressbooksystem";
 	static String tableN = "addressbook";
 	
 
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System!\n");
+		
+		DataBase.connectionToDatabase(databaseURL);
 		
 		Ability.addContact();
 		Ability.editContact();
@@ -52,8 +54,5 @@ public class AddressBook {
 		DataBase.showtable(tableN);
 		DataBase.countByCity(tableN);
 		
-		Contact c = new Contact("Suraj","sharma", "d34", "pune", "maha", "234123", "987654321", "suraj.com");
-		
-		DataBase.insertSQL(tableN, c);
 	}
 }
