@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Count {
 	protected static void forCity() {
+		ToMap.cityMap();
 		if (AddressBook.cityBook.isEmpty()) {
 			System.out.println("Empty Book");
 			return;
@@ -16,6 +17,7 @@ public class Count {
 	}
 
 	protected static void forState() {
+		ToMap.stateMap();
 		if (AddressBook.stateBook.isEmpty()) {
 			System.err.println("Empty Book");
 			return;

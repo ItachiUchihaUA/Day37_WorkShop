@@ -72,6 +72,7 @@ public class DataBase {
 			String str = ("select * from " + table);
 			Statement st = newC.createStatement();
 			ResultSet rs = st.executeQuery(str);
+			System.out.println("   FName |   LName  |  Address |   City   |  State   |   Zip    |   Phone   |   Email");
 			while (rs.next()) {
 				System.out.printf("%8s | %8s | %8s | %8s | %8s | %8s | %8s | %8s%n", rs.getString(1), rs.getString(2),
 						rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),

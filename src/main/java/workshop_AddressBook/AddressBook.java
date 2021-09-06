@@ -22,7 +22,9 @@ public class AddressBook {
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System!\n");
 		Scanner sc = new Scanner(System.in);
+		
 		DataBase.connectionToDatabase(databaseURL,tableN);
+		
 		int flag = 1;
 		int select;
 		while (flag != 0) {
