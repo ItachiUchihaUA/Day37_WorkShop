@@ -10,11 +10,33 @@ public class DataBase {
 
 	protected static Connection newC;
 
-	protected static void connectionToDatabase(String URL) {
+	protected static void connectionToDatabase(String URL, String table) {
 		try {
 			newC = DriverManager.getConnection(URL, "ujjwal", "ujjwal123");
 			if (newC != null) {
 				System.out.println("Connected to Database");
+				try {
+					String str = ("select * from " + table);
+					Statement st = newC.createStatement();
+					ResultSet rs = st.executeQuery(str);
+					while (rs.next()) {
+						Contact c = new Contact();
+						c.setFirstName(rs.getString(1));
+						c.setLastName(rs.getString(2));
+						c.setAddress(rs.getString(3));
+						c.setCity(rs.getString(4));
+						c.setState(rs.getString(5));
+						c.setZip(rs.getString(6));
+						c.setPhone(rs.getString(7));
+						c.setEmail(rs.getString(8));
+						AddressBook.addressBook.add(c);
+					}
+					System.out.println();
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+				}
+				
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
